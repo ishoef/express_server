@@ -25,30 +25,6 @@ app.get("/", (req: Request, res: Response) => {
 app.use("/users", userRotues);
 
 
-// Delete User by id
-app.delete("/users/:id", async (req: Request, res: Response) => {
-  const id = req.params?.id;
-
-  try {
-    const result = await pool.query(`DELETE FROM users WHERE id = $1`, [id]);
-
-    console.log(result);
-    if (result.rowCount === 0) {
-      res.status(404).json({
-        success: false,
-        message: "User not found for deleting",
-      });
-    } else {
-      res.status(200).json({
-        success: true,
-        message: "User Deleted Successfully",
-        data: result.rows,
-      });
-    }
-  } catch (err) {
-    console.log(err);
-  }
-});
 
 // todos CRUD -------------------------------------------
 // POST Todos
