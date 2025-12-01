@@ -24,34 +24,6 @@ app.get("/", (req: Request, res: Response) => {
 // Users CRUD ---------------
 app.use("/users", userRotues);
 
-// Update User by id
-app.put("/users/:id", async (req: Request, res: Response) => {
-  const id = req.params.id;
-  const { name, email } = req.body;
-  try {
-    const result = await pool.query(
-      `UPDATE users SET name=$1, email=$2 WHERE id=$3 RETURNING *`,
-      [name, email, req.params.id]
-    );
-
-    if (result.rows.length === 0) {
-      res.status(404).json({
-        success: false,
-        message: "User Not found",
-      });
-    } else {
-      res.status(200).json({
-        success: true,
-        message: "user Updated Successfully",
-        data: result.rows[0],
-      });
-    }
-
-    console.log(result.rows);
-  } catch (err) {
-    console.log(err);
-  }
-});
 
 // Delete User by id
 app.delete("/users/:id", async (req: Request, res: Response) => {

@@ -1,9 +1,8 @@
-import express, { Request, Response } from "express";
-import { pool } from "../../config/db";
+import express from "express";
 import { userControllers } from "./user.controller";
 
 const router = express.Router();
-const { createUser, getUser, getSingleUser } = userControllers;
+const { createUser, getUser, getSingleUser, updateUser } = userControllers;
 
 // POST a user
 router.post("/", createUser);
@@ -13,5 +12,8 @@ router.get("/", getUser);
 
 // GEt single user
 router.get("/:id", getSingleUser);
+
+// Udpate User by id
+router.put("/:id", updateUser);
 
 export const userRotues = router;
