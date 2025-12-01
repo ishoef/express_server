@@ -24,7 +24,6 @@ app.get("/", (req: Request, res: Response) => {
 // Users CRUD ---------------
 app.use("/users", userRotues);
 
-
 // Update User by id
 app.put("/users/:id", async (req: Request, res: Response) => {
   const id = req.params.id;
