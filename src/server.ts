@@ -24,29 +24,6 @@ app.get("/", (req: Request, res: Response) => {
 // Users CRUD ---------------
 app.use("/users", userRotues);
 
-// GET User by id
-app.get("/users/:id", async (req: Request, res: Response) => {
-  const id = req.params.id;
-  try {
-    const result = await pool.query(`SELECT * FROM users WHERE id = $1`, [id]);
-
-    if (result.rows.length === 0) {
-      res.status(404).json({
-        success: false,
-        message: "User Not found",
-      });
-    } else {
-      res.status(200).json({
-        success: true,
-        data: result.rows[0],
-      });
-    }
-
-    console.log(result.rows);
-  } catch (err) {
-    console.log(err);
-  }
-});
 
 // Update User by id
 app.put("/users/:id", async (req: Request, res: Response) => {
