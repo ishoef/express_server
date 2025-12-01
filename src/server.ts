@@ -4,6 +4,7 @@ import config from "./config";
 import logger from "./middleware/middleware";
 import initDB, { pool } from "./config/db";
 import { userRotues } from "./modules/user/user.routes";
+import { todosRoutes } from "./modules/todo/todo.routes";
 
 const app = express();
 const port = config.port;
@@ -21,11 +22,13 @@ app.get("/", (req: Request, res: Response) => {
   res.send("hello Ismail, How are you");
 });
 
-// Users CRUD 
+// Users CRUD
 app.use("/users", userRotues);
 
 // todos CRUD -------------------------------------------
 // POST Todos
+
+app.use("/todos", todosRoutes);
 app.post("/todos", logger, async (req: Request, res: Response) => {
   const { user_id, title } = req.body;
 
