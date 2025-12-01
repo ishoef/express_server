@@ -21,10 +21,8 @@ app.get("/", (req: Request, res: Response) => {
   res.send("hello Ismail, How are you");
 });
 
-// Users CRUD ---------------
+// Users CRUD 
 app.use("/users", userRotues);
-
-
 
 // todos CRUD -------------------------------------------
 // POST Todos
