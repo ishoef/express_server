@@ -5,6 +5,7 @@ import logger from "./middleware/middleware";
 import initDB, { pool } from "./config/db";
 import { userRotues } from "./modules/user/user.routes";
 import { todosRoutes } from "./modules/todo/todo.routes";
+import { authRouter } from "./modules/auth/auth.routes";
 
 const app = express();
 const port = config.port;
@@ -131,6 +132,9 @@ app.delete("/todos/:id", async (req: Request, res: Response) => {
     });
   }
 });
+
+// auth routes
+app.use("/auth", authRouter);
 
 // Not Found Route
 app.use((req, res) => {
