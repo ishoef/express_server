@@ -4,6 +4,7 @@ const auth = () => {
   return (req: Request, res: Response, next: NextFunction) => {
     console.log("i am clickd");
     console.log(req.body);
+    console.log(req.headers);
   };
 };
 
