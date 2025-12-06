@@ -5,6 +5,6 @@ import auth from "../../middleware/auth";
 const router = Router();
 
 // http://localhost:5000/auth/login
-router.post("/login", auth, authController.loginUser);
+router.post("/login", authController.loginUser);
 
 export const authRouter = router;
